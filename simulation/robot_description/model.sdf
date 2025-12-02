@@ -1,0 +1,194 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="turtlebot3_waffle_pi">
+    <pose>0 0 0 0 0 0</pose>
+
+    <!-- ================= BASE LINK ================= -->
+    <link name="base_link">
+      <inertial>
+        <pose>-0.064 0 0.048 0 0 0</pose>
+        <inertia>
+          <ixx>4.2111447e-02</ixx>
+          <iyy>4.2111447e-02</iyy>
+          <izz>7.5254874e-02</izz>
+        </inertia>
+        <mass>1.3729096</mass>
+      </inertial>
+      <collision name="base_collision">
+        <geometry><box><size>0.265 0.265 0.089</size></box></geometry>
+      </collision>
+      <visual name="base_visual">
+        <geometry>
+          <mesh>
+            <uri>model://turtlebot3_common/meshes/bases/waffle_pi_base.stl</uri>
+            <scale>0.001 0.001 0.001</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- ================= IMU ================= -->
+    <link name="imu_link">
+      <sensor name="tb3_imu" type="imu">
+        <always_on>true</always_on>
+        <update_rate>200</update_rate>
+        <plugin name="turtlebot3_imu" filename="libgazebo_ros_imu_sensor.so">
+          <ros><remapping>~/out:=imu</remapping></ros>
+        </plugin>
+      </sensor>
+    </link>
+
+    <!-- ================= FRONT LIDAR ================= -->
+    <link name="base_scan">
+      <sensor name="front_lidar" type="ray">
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <pose>-0.064 0 0.121 0 0 0</pose>
+        <update_rate>10</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>360</samples>
+              <resolution>1</resolution>
+              <min_angle>0</min_angle>
+              <max_angle>6.28</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.12</min>
+            <max>3.5</max>
+            <resolution>0.015</resolution>
+          </range>
+        </ray>
+        <plugin name="front_lidar_plugin" filename="libgazebo_ros_ray_sensor.so">
+          <ros><remapping>~/out:=scan</remapping></ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>base_scan</frame_name>
+        </plugin>
+      </sensor>
+    </link>
+
+    <!-- ================= LEFT LIDAR ================= -->
+    <link name="left_lidar_link">
+      <sensor name="left_lidar" type="ray">
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <pose>0 0.10 0.12 0 0 1.5708</pose>
+        <update_rate>10</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>180</samples>
+              <resolution>1</resolution>
+              <min_angle>-1.57</min_angle>
+              <max_angle>1.57</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.12</min>
+            <max>3.5</max>
+            <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <plugin name="left_lidar_plugin" filename="libgazebo_ros_ray_sensor.so">
+          <ros><remapping>~/out:=scan_left</remapping></ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>base_scan_left</frame_name>
+        </plugin>
+      </sensor>
+    </link>
+
+    <!-- ================= RIGHT LIDAR ================= -->
+    <link name="right_lidar_link">
+      <sensor name="right_lidar" type="ray">
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <pose>0 -0.10 0.12 0 0 -1.5708</pose>
+        <update_rate>10</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>180</samples>
+              <resolution>1</resolution>
+              <min_angle>-1.57</min_angle>
+              <max_angle>1.57</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.12</min>
+            <max>3.5</max>
+            <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <plugin name="right_lidar_plugin" filename="libgazebo_ros_ray_sensor.so">
+          <ros><remapping>~/out:=scan_right</remapping></ros>
+          <output_type>sensor_msgs/LaserScan</output_type>
+          <frame_name>base_scan_right</frame_name>
+        </plugin>
+      </sensor>
+    </link>
+
+    <!-- ================= CAMERA ================= -->
+    <link name="camera_rgb_optical_frame">
+      <sensor name="camera" type="camera">
+        <always_on>true</always_on>
+        <visualize>true</visualize>
+        <update_rate>30</update_rate>
+        <camera name="picam">
+          <horizontal_fov>1.085595</horizontal_fov>
+          <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+          <clip><near>0.03</near><far>100</far></clip>
+        </camera>
+        <plugin name="camera_driver" filename="libgazebo_ros_camera.so">
+          <ros/>
+        </plugin>
+      </sensor>
+    </link>
+
+    <!-- ================= JOINTS ================= -->
+    <joint name="base_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>base_scan</child>
+    </joint>
+
+    <joint name="left_lidar_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>left_lidar_link</child>
+      <pose>0 0.10 0.12 0 0 1.5708</pose>
+    </joint>
+
+    <joint name="right_lidar_joint" type="fixed">
+      <parent>base_link</parent>
+      <child>right_lidar_link</child>
+      <pose>0 -0.10 0.12 0 0 -1.5708</pose>
+    </joint>
+
+    <!-- ================= DIFF DRIVE PLUGIN ================= -->
+    <plugin name="turtlebot3_diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <ros/>
+      <update_rate>30</update_rate>
+      <left_joint>wheel_left_joint</left_joint>
+      <right_joint>wheel_right_joint</right_joint>
+      <wheel_separation>0.287</wheel_separation>
+      <wheel_diameter>0.066</wheel_diameter>
+      <max_wheel_torque>20</max_wheel_torque>
+      <max_wheel_acceleration>1.0</max_wheel_acceleration>
+      <command_topic>cmd_vel</command_topic>
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_footprint</robot_base_frame>
+    </plugin>
+
+    <!-- ================= JOINT STATE PUBLISHER ================= -->
+    <plugin name="turtlebot3_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
+      <ros><remapping>~/out:=joint_states</remapping></ros>
+      <update_rate>30</update_rate>
+      <joint_name>wheel_left_joint</joint_name>
+      <joint_name>wheel_right_joint</joint_name>
+    </plugin>
+
+  </model>
+</sdf>
+

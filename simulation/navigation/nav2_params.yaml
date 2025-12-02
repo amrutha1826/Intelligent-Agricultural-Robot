@@ -1,0 +1,40 @@
+# nav2 params for tomato field (minimal working configuration)
+
+amcl:
+  ros__parameters:
+    use_sim_time: true
+    base_frame_id: "base_footprint"
+    odom_frame_id: "odom"
+    scan_topic: "/scan"
+    min_particles: 500
+    max_particles: 2000
+
+map_server:
+  ros__parameters:
+    use_sim_time: true
+    yaml_filename: "/home/amrutha/nav2_tomato/tomato_field_map_cleaned.yaml"
+
+planner_server:
+  ros__parameters:
+    use_sim_time: true
+
+controller_server:
+  ros__parameters:
+    use_sim_time: true
+
+bt_navigator:
+  ros__parameters:
+    use_sim_time: true
+
+# lifecycle manager must have node_names list initialized
+lifecycle_manager:
+  ros__parameters:
+    use_sim_time: true
+    autostart: true
+    node_names:
+      - map_server
+      - amcl
+      - planner_server
+      - controller_server
+      - bt_navigator
+

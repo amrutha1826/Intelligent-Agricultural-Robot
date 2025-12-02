@@ -1,0 +1,875 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <world name='default'>
+    <plugin name="gazebo_ros_init" filename="libgazebo_ros_init_system.so"/>
+    <plugin name="gazebo_ros_factory" filename="libgazebo_ros_factory_system.so"/>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -1</direction>
+    </light>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane><normal>0 0 1</normal><size>100 100</size></plane>
+          </geometry>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <plane><normal>0 0 1</normal><size>100 100</size></plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name='soil'>
+      <static>1</static>
+      <pose>-4.22186 1.01416 0 0 -0 0</pose>
+      <link name='soil_link'>
+        <visual name='soil_visual'>
+          <geometry><mesh><uri>model://soil/meshes/soil.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='soil_collision'>
+          <geometry><mesh><uri>model://soil/meshes/soil.dae</uri></mesh></geometry>
+        </collision>
+      </link>
+    </model>
+    <model name='rocks'>
+      <static>1</static>
+      <pose>5.08714 -2.68611 0 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://rocks/rocks.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://rocks/rocks.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    <model name='rocks_0'>
+      <static>1</static>
+      <pose>-0.919902 3.77214 0 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://rocks/rocks.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://rocks/rocks.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+
+    <model name='elements_0'>
+      <static>1</static>
+      <pose>-6 -3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_1'>
+      <static>1</static>
+      <pose>-4.5 -3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_2'>
+      <static>1</static>
+      <pose>-3 -3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_3'>
+      <static>1</static>
+      <pose>-1.5 -3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_4'>
+      <static>1</static>
+      <pose>0 -3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_5'>
+      <static>1</static>
+      <pose>1.5 -3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_6'>
+      <static>1</static>
+      <pose>3 -3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_7'>
+      <static>1</static>
+      <pose>4.5 -3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_8'>
+      <static>1</static>
+      <pose>6 -3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_9'>
+      <static>1</static>
+      <pose>-6 -2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_10'>
+      <static>1</static>
+      <pose>-4.5 -2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_11'>
+      <static>1</static>
+      <pose>-3 -2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_12'>
+      <static>1</static>
+      <pose>-1.5 -2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_13'>
+      <static>1</static>
+      <pose>0 -2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_14'>
+      <static>1</static>
+      <pose>1.5 -2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_15'>
+      <static>1</static>
+      <pose>3 -2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_16'>
+      <static>1</static>
+      <pose>4.5 -2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_17'>
+      <static>1</static>
+      <pose>6 -2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_18'>
+      <static>1</static>
+      <pose>-6 -0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_19'>
+      <static>1</static>
+      <pose>-4.5 -0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_20'>
+      <static>1</static>
+      <pose>-3 -0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_21'>
+      <static>1</static>
+      <pose>-1.5 -0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_22'>
+      <static>1</static>
+      <pose>0 -0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_23'>
+      <static>1</static>
+      <pose>1.5 -0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_24'>
+      <static>1</static>
+      <pose>3 -0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_25'>
+      <static>1</static>
+      <pose>4.5 -0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_26'>
+      <static>1</static>
+      <pose>6 -0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_27'>
+      <static>1</static>
+      <pose>-6 0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_28'>
+      <static>1</static>
+      <pose>-4.5 0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_29'>
+      <static>1</static>
+      <pose>-3 0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_30'>
+      <static>1</static>
+      <pose>-1.5 0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_31'>
+      <static>1</static>
+      <pose>0 0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_32'>
+      <static>1</static>
+      <pose>1.5 0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_33'>
+      <static>1</static>
+      <pose>3 0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_34'>
+      <static>1</static>
+      <pose>4.5 0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_35'>
+      <static>1</static>
+      <pose>6 0.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_36'>
+      <static>1</static>
+      <pose>-6 2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_37'>
+      <static>1</static>
+      <pose>-4.5 2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_38'>
+      <static>1</static>
+      <pose>-3 2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_39'>
+      <static>1</static>
+      <pose>-1.5 2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_40'>
+      <static>1</static>
+      <pose>0 2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_41'>
+      <static>1</static>
+      <pose>1.5 2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_42'>
+      <static>1</static>
+      <pose>3 2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_43'>
+      <static>1</static>
+      <pose>4.5 2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_44'>
+      <static>1</static>
+      <pose>6 2.25 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_45'>
+      <static>1</static>
+      <pose>-6 3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_46'>
+      <static>1</static>
+      <pose>-4.5 3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_47'>
+      <static>1</static>
+      <pose>-3 3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_48'>
+      <static>1</static>
+      <pose>-1.5 3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_49'>
+      <static>1</static>
+      <pose>0 3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_50'>
+      <static>1</static>
+      <pose>1.5 3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_51'>
+      <static>1</static>
+      <pose>3 3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_52'>
+      <static>1</static>
+      <pose>4.5 3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='elements_53'>
+      <static>1</static>
+      <pose>6 3.75 0.45 0 -0 0</pose>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+        </visual>
+        <collision name='collision'>
+          <geometry><mesh><uri>model://elements/meshes/plantoftomato.dae</uri></mesh></geometry>
+          <surface><contact/><friction/></surface>
+        </collision>
+      </link>
+    </model>
+    
+    <model name='farm_camera'>
+      <static>1</static>
+      <pose>0 -6 4 0 -0 0</pose>
+      <link name='camera_link'>
+        <sensor name='camera_sensor' type='camera'>
+          <always_on>1</always_on>
+          <update_rate>15</update_rate>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image><width>1280</width><height>720</height><format>R8G8B8</format></image>
+            <clip><near>0.1</near><far>100</far></clip>
+          </camera>
+          <plugin name='camera_controller' filename='libgazebo_ros_camera.so'>
+            <ros><namespace>/camera</namespace></ros>
+            <cameraName>farm_cam</cameraName>
+            <frameName>farm_cam_link</frameName>
+          </plugin>
+        </sensor>
+      </link>
+    </model>
+
+    <include>
+      <uri>model://turtlebot3_waffle_pi</uri>
+      <pose>0 0 0.1 0 0 0</pose>
+    </include>
+
+    <gravity>0 0 -9.8</gravity>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+    </scene>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>7.83206 -0.748239 5.54926 0 0.275643 2.35619</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+      <plugin name="gazebo_ros_clock" filename="libgazebo_ros_clock.so"/>
+    </gui>
+
+  </world>
+</sdf>
